@@ -1,0 +1,30 @@
+syntax = "v1"
+
+info(
+	author: "sandnes"
+	date:   "2022-04-17"
+	desc:   "account接口"
+)
+type (
+	UserInfoReq {
+		UserId int64 `path:"userId"`
+	}
+
+	UserInfoRes {
+		Result   int8   `json:"result"`
+		UserId   int64  `json:"userId"`
+		Username string `json:"username"`
+		Sex      int32  `json:"sex"`
+		City     int32  `json:"city"`
+		SchoolId int32  `json:"schoolid"`
+		Status   int8   `json:"status"`
+		RegTime  string `json:"regTime"`
+		Phone    string `json:"phone"`
+		Email    string `json:"email"`
+	}
+)
+
+service  account {
+	@handler getUserInfo
+	get /api/account/get/:userId (UserInfoReq) returns (UserInfoRes)
+}

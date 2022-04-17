@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package account;
+
+option go_package = "./account";
+
+message UserInfoRequest {
+    int64 userid = 1;
+}
+
+message UserInfoResponse {
+    RPC_CALL_RESULT result = 1;
+    UserInfo info = 2;
+}
+message UserInfo {
+    int64 userid = 1;
+    string username = 2;
+    int32 sex = 3;
+    string mood = 4;
+    int32 city = 5;
+    int32 schoolid = 6;
+    int32 status = 7;
+    string regTime = 8;
+    string phone = 9;
+    string email = 10;
+}
+
+service Account {
+    rpc GetUserInfo(UserInfoRequest) returns (UserInfoResponse);
+}
+
+enum RPC_CALL_RESULT {
+    RPC_CALL_RESULT_NONE        = 0;   //不应出现
+    RPC_CALL_RESULT_SUCCESS     = 1;   //成功
+    RPC_CALL_RESULT_DB_ERROR    = 2;   //数据库出错
+    RPC_CALL_RESULT_INPUT_ERROR = 3;   //传入数据有错，格式错误或者找不到对应条目
+    RPC_CALL_RESULT_ERROR       = 4;   //其他错误
+}
