@@ -5,7 +5,7 @@ Etcd:
   - 127.0.0.1:2379
   Key: account.rpc
 # mysql 配置
-DataSource: root:2326!rx@cfWF@tcp(192.168.0.108:3306)/91cb_account?parseTime=true
+DataSource: --
 # 对应的表
 Table: tbl_account
 # redis 作为换存储
